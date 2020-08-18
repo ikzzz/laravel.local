@@ -1,0 +1,51 @@
+{
+    "1": {
+        "id": 1,
+        "cat_id": 1,
+        "isPrivate": true,
+        "title": "Новость 1",
+        "text": "Хорошая новость"
+    },
+    "2": {
+        "id": 2,
+        "cat_id": 2,
+        "isPrivate": true,
+        "title": "Новость 2",
+        "text": "А тут ещё лучше"
+    },
+    "3": {
+        "id": 3,
+        "cat_id": 2,
+        "isPrivate": false,
+        "title": "Новость 3",
+        "text": "хамси хамса"
+    },
+    "4": {
+        "id": 4,
+        "cat_id": 1,
+        "isPrivate": false,
+        "title": "Новость 4",
+        "text": "не рыба - не мясо"
+    },
+    "5": {
+        "title": 2,
+        "cat_id": 1,
+        "text": null,
+        "isPrivate": false,
+        "id": 5
+    },
+    "6": {
+        "title": 123,
+        "cat_id": 2,
+        "text": "ffff",
+        "isPrivate": false,
+        "id": 6
+    },
+    "7": {
+        "title": "dfdsfsd",
+        "cat_id": 1,
+        "text": "dsfsdfsdf",
+        "isPrivate": true,
+        "id": 7
+    }
+}

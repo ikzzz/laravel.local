@@ -9,7 +9,7 @@
     @endsection
 
     @section('content')
-        <a href={{route('news.index')}}">Все новости |</a>
+        <a href="{{route('news.index')}}">Все новости |</a>
         <a href="{{route('news.category.index')}}">Новости по категориям</a><br>
         @forelse($news as $item)
             <h2>{{ $item['title'] }}</h2>

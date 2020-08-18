@@ -9,8 +9,11 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('/', 'IndexController@index')->name('Admin');
-    Route::get('/addNews', 'IndexController@addNews')->name('addNews');
+    Route::get('/test1', 'IndexController@test2')->name('test1');
     Route::get('/test2', 'IndexController@test2')->name('test2');
+    Route::match(['get', 'post'], '/create', 'IndexController@create')->name('create');
+    Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
+    Route::get('/json', 'IndexController@json')->name('json');
 });
 
 Route::group([
@@ -29,6 +32,6 @@ Route::group([
 
 Auth::routes();
 
-Route::get('/logout', 'LoginController@logout')->name('logout');
+//Route::get('/logout', 'LoginController@logout')->name('logout');
 
 //Route::get('/home', 'HomeController@index')->name('index');
