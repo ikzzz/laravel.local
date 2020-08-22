@@ -1,26 +1,15 @@
 <?php
 
 namespace App;
+use Illuminate\Support\Facades\DB;
 
 
 class NewsCategory
 {
-    private static $category = [
-        1 => [
-            'id' => 1,
-            'category' => 'Авто',
-            'name' => 'Auto',
-        ],
-        2 => [
-            'id' => 2,
-            'category' => 'Информационные технологии',
-            'name' => 'IT',
-        ],
-    ];
-
     public static function getCategories()
     {
-        return static::$category;
+        $categories = DB::table('categories')->get();
+        return $categories;
     }
 
     public static function getCategoryIdByName($name) {

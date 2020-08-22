@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
     use App\NewsCategory;
     use App\News;
     use Illuminate\Support\Facades\File;
+    use Illuminate\Support\Facades\DB;
     use Storage;
 
 class IndexController extends Controller
@@ -15,28 +16,26 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-    /*public function create() {
-        return view('admin.create', [
-            'categories' => NewsCategory::getCategories()
-        ]);
-    }
-    */
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
-            $data = News::getNews();
+            $name = null;
+            if ($request->file('image')) {
+                $path = \Storage::putFile('public/images', $request->file('image'));
+                $name = \Storage::url($path);
+            }
+
             $data[] = [
-                'title' => $request->title,
-                'cat_id' => $request->category,
-                'text' => $request->text,
-                'isPrivate' => isset($request->isPrivate)
+                "title" => $request->title,
+                "id_category" => $request->category,
+                "text" => $request->text,
+                "isPrivate" => isset($request->isPrivate),
+                "image" => $name
             ];
-            $id = array_key_last($data);
-            $data[$id]['id'] = $id;
 
-            File::put(storage_path() . "/news.json", json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
+            DB::table('news')->insert($data);
 
-            return redirect()->route('admin.create')->with('success', 'Новость создана!');
+            return redirect()->route('admin.create')->with('success', 'Новость добавлена успешно!');
         }
 
         return view('admin.create', [
