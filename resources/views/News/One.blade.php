@@ -1,7 +1,7 @@
-@extends('layouts.main')
+@extends ("layouts.main")
 
 @section('title')
-    @parentНовости
+    @parent Новости
 @endsection
 
 @section('menu')
@@ -14,9 +14,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{route('news.category.index')}}">К категориям</a><br>
                         @if (!$news->isPrivate)
                             <h2><?=$news->title?></h2>
-                            <div class="card-img" style="background-image: url({{ $news->image ?? asset('storage/news_default.jpg') }})"></div>
+                            <div class="card-img" style="background-image: url({{$news->image ?? asset('storage/news_default.jpg')}})"></div>
                             <p><?=$news->text?></p>
                         @else
                             Новость приватная. Зарегистрируйтесь для просмотра ..
@@ -27,3 +28,5 @@
         </div>
     </div>
 @endsection
+
+

@@ -15,10 +15,10 @@
                 <div class="card">
                     <div class="card-body">
     <p> <h1>Welcome!!!</h1></p>
-    @dump(env('db_database'))
-    </div>
-    </div>
-    </div>
-    </div>
+
+                    </div>
+                 </div>
+             </div>
+        </div>
     </div>
 @endsection

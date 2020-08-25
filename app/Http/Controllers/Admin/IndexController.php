@@ -16,7 +16,7 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-    public function create(Request $request)
+  /*  public function create(Request $request)
     {
         if ($request->isMethod('post')) {
             $name = null;
@@ -42,7 +42,7 @@ class IndexController extends Controller
             'categories' => NewsCategory::getCategories()
         ]);
     }
-
+*/
 
 
     public function test1() {
@@ -52,7 +52,7 @@ class IndexController extends Controller
     public function test2() {
         return view('admin.test2');
     }
-
+    /*
     public function downloadImage()
     {
         return response()->download('1.jpeg');
@@ -64,5 +64,5 @@ class IndexController extends Controller
         return response()->json(News::getNews())
             ->header('Content-Disposition', 'attachment; filename = "news_json.txt"')
             ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    }
+    }*/
 }

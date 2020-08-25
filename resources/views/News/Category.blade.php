@@ -14,7 +14,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{route('news.category.index')}}">К категориям</a><br>
                         <h1>Новости категории ...</h1>
+
                         @forelse($category as $item)
                             <p>{{ $item->title }}</p>
                             @if (!$item->isPrivate)

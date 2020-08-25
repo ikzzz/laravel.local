@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-    Все новости | <a href="{{route('news.category.index')}}">Новости по категориям</a><br>
+                        Все новости | <a href="{{route('news.category.index')}}">Новости по категориям</a><br>
 
 @forelse($news as $item)
     <h2>{{ $item->title }}</h2>
@@ -24,6 +24,7 @@
 @empty
     Нет новостей
 @endforelse
+                                {{ $news->links() }}
                             </div>
                         </div>
                     </div>
