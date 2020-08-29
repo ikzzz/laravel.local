@@ -19,31 +19,70 @@
 
                             <div class="form-group">
                                 <label for="newsTitle">Название новости</label>
+                                @if ($errors->has('title'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('title') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input name="title" type="text" class="form-control" id="newsTitle" value="{{ $news->title ?? old('title') }}">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="newsCategory">Категория новости</label>
+                                @if ($errors->has('id_category'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->get('id_category') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <select name="id_category" class="form-control" id="newsCategory">
                                     @forelse($categories as $item)
-                                        <option @if ($item['id'] == old('category')) selected @endif value="{{ $item['id'] }}">{{ $item['name_category'] }}</option>
+                                        <option
+                                            @if ($item->id == old('id_category') ?? $item->id == $news->id_category) selected
+                                            @endif value="{{ $item['id'] }}">{{ $item['name_category'] }}</option>
                                     @empty
                                         <h2>Нет категории</h2>
                                     @endforelse
-
+                                    {{--<option value="break">не верная категория</option>--}}
                                 </select>
 
                             </div>
 
                             <div class="form-group">
                                 <label for="newsText">Текст новости</label>
+                                @if ($errors->has('text'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->get('text') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <textarea name="text" class="form-control" rows="5" id="newsText">{{ $news->text ?? old('text') }}</textarea>
                             </div>
 
                             <div class="form-group">
+                                @if ($errors->has('image'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->get('image') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="file" name="image">
                             </div>
+
+                            <div class="form-check">
+                                @if ($errors->has('is_Private'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->get('is_Private') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
 
                             <div class="form-check">
                                 <input @if ($news->isPrivate == 1 || old('isPrivate') == 1) checked @endif name="isPrivate" class="form-check-input" type="checkbox" value="1"

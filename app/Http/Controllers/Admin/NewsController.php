@@ -24,16 +24,15 @@ class NewsController extends Controller
     {
 
         if ($request->isMethod('post')) {
-
             $news = new News();
-
             $name = null;
             if ($request->file('image')) {
                 $path = \Storage::putFile('public/images', $request->file('image'));
-                $image = \Storage::url($path);
+                $name = \Storage::url($path);
             }
-
+            $news->image = $name;
             $data = $request->except('_token');
+            $this->validate($request, News::rules(),[],News::attrNames());
             $news->fill($data)->save();
 
 
@@ -50,13 +49,15 @@ class NewsController extends Controller
 
     public function update(Request $request, News $news)
     {
+        //$news = new News();
         $name = null;
         if ($request->file('image')) {
             $path = \Storage::putFile('public/images', $request->file('image'));
             $name = \Storage::url($path);
         }
-
+        $news->image = $name;
         $data = $request->except('_token');
+        $this->validate($request, News::rules(),[],News::attrNames());
         $news->fill($data)->save();
         return redirect()->route('admin.news')->with('success', 'Новость изменена успешно!');
     }

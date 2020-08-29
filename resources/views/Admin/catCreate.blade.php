@@ -19,10 +19,24 @@
 
                             <div class="form-group">
                                 <label for="newsTitle">Название категории</label>
+                                @if ($errors->has('name_category'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('name_category') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input name="name_category" type="text" class="form-control" id="newsTitle" value="{{ $category->name_category ?? old('name_category') }}">
                             </div>
                             <div class="form-group">
                                 <label for="newsTitle">Псевдоним категории(транслитом)</label>
+                                @if ($errors->has('slug_category'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('slug_category') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input name="slug_category" type="text" class="form-control" id="newsTitle" value="{{ $category->slug_category ?? old('slug_category') }}">
                             </div>
 

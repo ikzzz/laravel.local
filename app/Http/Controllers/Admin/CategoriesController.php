@@ -29,6 +29,7 @@ class CategoriesController extends Controller
             //$category = null;
 
             $data = $request->except('_token');
+            $this->validate($request, Category::rules(),[],Category::attributesNames());
             $category->fill($data)->save();
             return redirect()->route('admin.categories')->with('success', 'Категория добавлена успешно!');
 
@@ -46,14 +47,15 @@ class CategoriesController extends Controller
     public function update(Request $request, Category $category)
     {
         $data = $request->except('_token');
+        $this->validate($request, Category::rules(),[],Category::attributesNames());
         $category->fill($data)->save();
-        return redirect()->route('admin.categories')->with('success', 'Новость изменена успешно!');
+        return redirect()->route('admin.categories')->with('success', 'Категория изменена успешно!');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.categories')->with('success', 'Новость удалена успешно!');
+        return redirect()->route('admin.categories')->with('success', 'Категория удалена успешно!');
     }
 
     public function edit(Category $category)
