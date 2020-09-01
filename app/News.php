@@ -19,7 +19,7 @@ class News extends Model
     {
         $tableNameCategory = (new Category())->getTable();
         return [
-            'title' => ['required', 'min:3', 'max:20'],//, new Ember()],
+            'title' => ['required', 'min:3', 'max:20'],
             'text' => 'required|min:3',
             'image' => 'mimes:jpeg,bmp,png|max:1024',
             'isPrivate' => 'sometimes|in:on',

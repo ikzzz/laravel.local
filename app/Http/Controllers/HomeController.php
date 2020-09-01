@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-/*    public function __construct()//для обхода страницы авторизации
+   /* public function __construct()
     {
         $this->middleware('auth');
     }
@@ -29,7 +29,6 @@ class HomeController extends Controller
 
     public function about()
     {
-        //return view('home');
         return view('about');
     }
 }

@@ -26,14 +26,10 @@ class CategoriesController extends Controller
 
             $category = new Category;
 
-            //$category = null;
-
             $data = $request->except('_token');
             $this->validate($request, Category::rules(),[],Category::attributesNames());
             $category->fill($data)->save();
             return redirect()->route('admin.categories')->with('success', 'Категория добавлена успешно!');
-
-            //return redirect()->route('admin.catCreate')->with('success', 'Категория добавлена успешно!');
 
         }
 
