@@ -14,11 +14,19 @@ class NewsController extends Controller
 
     public function news()
     {
-        $news = News::query()->paginate(10);
+        $news = News::query()->paginate(5);
 
         return view('admin.news')->with('news', $news);
     }
 
+    protected function saveImage(Request $request) {
+        $name = null;
+        if ($request->file('image')) {
+            $path = \Storage::putFile('public/images', $request->file('image'));
+            $name = \Storage::url($path);
+        }
+        return $name;
+    }
 
     public function create(Request $request)
     {
@@ -26,11 +34,7 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $news = new News();
             $name = null;
-            if ($request->file('image')) {
-                $path = \Storage::putFile('public/images', $request->file('image'));
-                $name = \Storage::url($path);
-            }
-            $news->image = $name;
+            $news->image = $this->saveImage($request);
             $data = $request->except('_token');
             $this->validate($request, News::rules(),[],News::attrNames());
             $news->fill($data)->save();
@@ -51,11 +55,7 @@ class NewsController extends Controller
     {
         //$news = new News();
         $name = null;
-        if ($request->file('image')) {
-            $path = \Storage::putFile('public/images', $request->file('image'));
-            $name = \Storage::url($path);
-        }
-        $news->image = $name;
+        $news->image = $this->saveImage($request);
         $data = $request->except('_token');
         $this->validate($request, News::rules(),[],News::attrNames());
         $news->fill($data)->save();

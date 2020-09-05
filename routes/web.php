@@ -9,7 +9,7 @@ Route::group([
     'as' => 'admin.',
     'middleware' => ['is_admin', 'auth']
 ], function () {
-    Route::get('/', 'IndexController@index')->name('admin');
+    //Route::get('/', 'IndexController@index')->name('admin');
     Route::get('/test1', 'IndexController@test2')->name('test1');
     Route::get('/test2', 'IndexController@test2')->name('test2');
     Route::match(['post', 'get'], '/profile', 'ProfileController@update')->name('updateProfile');
@@ -32,6 +32,8 @@ Route::group([
     Route::get('/users/setAdmin/{user}', 'UsersController@setAdmin')->name('setAdmin');
     Route::get('/users/unsetAdmin/{user}', 'UsersController@unsetAdmin')->name('unsetAdmin');
     Route::get('/users/destroy/{user}', 'UsersController@destroy')->name('UserDestroy');
+
+    Route::get('/parser', 'ParserController@index')->name('parser');
 });
 
 Route::group([
@@ -59,6 +61,8 @@ Route::group([
 
 });
 
-
+//авторизации
 Auth::routes();
 
+Route::get('/auth/vk', 'LoginController@loginVK')->name('vklogin');
+Route::get('/auth/vk/response', 'LoginController@responseVK')->name('vkResponse');

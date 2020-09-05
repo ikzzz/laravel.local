@@ -139,6 +139,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        SocialiteProviders\Manager\ServiceProvider::class,
+        Orchestra\Parser\XmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -190,6 +192,7 @@ return [
     */
 
     'aliases' => [
+        'XmlParser' => Orchestra\Parser\Xml\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

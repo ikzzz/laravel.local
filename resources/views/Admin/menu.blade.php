@@ -23,6 +23,9 @@
                 <a class="dropdown-item" href="{{ route('admin.users') }}">
                     CRUD пользователей
                 </a>
+                <a class="dropdown-item" href="{{ route('admin.parser') }}">
+                    Запарсить новости
+                </a>
                 <a class="dropdown-item" href="{{ route('admin.test1') }}">
                     Тест 1
                 </a>

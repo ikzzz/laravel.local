@@ -30,7 +30,7 @@
                             </a>
                             @endif
                             @if(Auth::user()->id == $user->id && $user->is_admin == true)
-                                <a href="#" class="btn btn-success">Вы администратор!</a>
+                                <a href="#" class="btn btn-successз">Вы администратор!</a>
                             @else
                                 @if($user->is_admin == true)
                                 <a href="{{route('admin.unsetAdmin', $user)}}" class="btn btn-danger">
