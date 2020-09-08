@@ -7,14 +7,14 @@ use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Storage;
+//use Storage;
 
 class NewsController extends Controller
 {
 
     public function news()
     {
-        $news = News::query()->paginate(5);
+        $news = News::query()->paginate(10);
 
         return view('admin.news')->with('news', $news);
     }
@@ -34,7 +34,9 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $news = new News();
             $name = null;
-            $news->image = $this->saveImage($request);
+            $data = $request->all();
+            $data['image'] = $this->saveImage($request);
+            //$news->image = $this->saveImage($request);
             $data = $request->except('_token');
             $this->validate($request, News::rules(),[],News::attrNames());
             $news->fill($data)->save();
@@ -55,7 +57,8 @@ class NewsController extends Controller
     {
         //$news = new News();
         $name = null;
-        $news->image = $this->saveImage($request);
+        $data = $request->all();
+        $data['image'] = $this->saveImage($request);
         $data = $request->except('_token');
         $this->validate($request, News::rules(),[],News::attrNames());
         $news->fill($data)->save();

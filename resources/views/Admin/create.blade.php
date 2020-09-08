@@ -16,7 +16,7 @@
 
                         <form enctype="multipart/form-data" method="POST" action="@if (!$news->id){{ route('admin.create') }}@else{{ route('admin.update', $news) }}@endif">
                             @csrf
-
+                            {{--@if($news->id) @method('PUT') @endif--}}
                             <div class="form-group">
                                 <label for="newsTitle">Название новости</label>
                                 @if ($errors->has('title'))
@@ -61,7 +61,7 @@
                                         @endforeach
                                     </div>
                                 @endif
-                                <textarea name="text" class="form-control" rows="5" id="newsText">{{ $news->text ?? old('text') }}</textarea>
+                                <textarea name="text" class="form-control" rows="5" id="newsText">{!! old('text') ?? $news->text !!}</textarea>
                             </div>
 
                             <div class="form-group">
@@ -72,6 +72,8 @@
                                         @endforeach
                                     </div>
                                 @endif
+                                    <img src="{{ $news->image ?? asset('storage/news_default.jpg') }}" alt="" width="600">
+                                    <hr>
                                 <input type="file" name="image">
                             </div>
 
@@ -99,7 +101,18 @@
 
                             </div>
                         </form>
-
+                        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                        <script>
+                            var options = {
+                                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                            };
+                        </script>
+                        <script>
+                            CKEDITOR.replace('newsText', options);
+                        </script>
                     </div>
                 </div>
             </div>

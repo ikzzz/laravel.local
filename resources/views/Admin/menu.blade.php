@@ -17,6 +17,9 @@
                 <a class="dropdown-item" href="{{ route('admin.news') }}">
                     CRUD Новостей
                 </a>
+                <a class="dropdown-item" href="{{ route('admin.resource') }}">
+                    CRUD Ресурсов новостей
+                </a>
                 <a class="dropdown-item" href="{{ route('admin.categories') }}">
                     CRUD категории
                 </a>

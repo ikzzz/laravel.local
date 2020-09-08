@@ -25,6 +25,12 @@ Route::group([
     Route::get('/categories/edit/{category}', 'CategoriesController@edit')->name('catEdit');
     Route::post('/categories/update/{category}', 'CategoriesController@update')->name('catUpdate');
     Route::get('/categories/destroy/{category}', 'CategoriesController@destroy')->name('catDestroy');
+    //CRUD RESOURCE
+    Route::get('/resource', 'ResourceController@resource')->name('resource');
+    Route::match(['get', 'post'], '/resource/create', 'ResourceController@create')->name('resourceCreate');
+    Route::get('/resource/edit/{resource}', 'ResourceController@edit')->name('resourceEdit');
+    Route::post('/resource/update/{resource}', 'ResourceController@update')->name('resourceUpdate');
+    Route::get('/resource/destroy/{resource}', 'ResourceController@destroy')->name('resourceDestroy');
     //CRUD USERS
     Route::get('/users', 'UsersController@users')->name('users');
     //Route::match(['get', 'post'], '/user/create', 'UsersController@create')->name('createUser');
@@ -59,6 +65,10 @@ Route::group([
 
     Route::match(['post', 'get'], '/profile', 'ProfileController@update')->name('updateProfile');
 
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
 //авторизации

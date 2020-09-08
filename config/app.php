@@ -125,7 +125,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
+    | Autoloaded Services Providers
     |--------------------------------------------------------------------------
     |
     | The service providers listed here will be automatically loaded on the
@@ -137,8 +137,9 @@ return [
     'providers' => [
 
         /*
-         * Laravel Framework Service Providers...
+         * Laravel Framework Services Providers...
          */
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Orchestra\Parser\XmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -166,11 +167,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * Package Services Providers...
          */
 
         /*
-         * Application Service Providers...
+         * Application Services Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
